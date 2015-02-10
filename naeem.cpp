@@ -43,7 +43,9 @@ using namespace std;
 //string i;
 int st_no,ins_no,k,i,f,j,ev_number;
 char str1;
-string line,st_name,ins_name;
+string line;
+string st_name[10];
+string ins_name[10];
 
 int main() {
     
@@ -69,21 +71,46 @@ int main() {
 
     outputfile.open("naeem.out");
     
-    k=1;
+    
+    
+    inputfile >> i;
+    
+    st_no = i;
+    
+    inputfile >> i;
+    
+    ins_no = i;
+    
 
-    while ( inputfile >> i ) {
+    
+    for (j=0; j<st_no ; j++) {
         
-        if      ( k==1 ) { st_no = i; k=k+1;}
-        else if ( k==2 ) {ins_no = i; k=k+1;}
-        else { break; }
+        inputfile >> st_name[j];
         
     }
     
-    inputfile.close();
     
-    inputfile.open(inputfilename.c_str());
+    for (j=0; j<ins_no ; j++) {
+        
+        inputfile >> ins_name[j];
+        
+    }
+
     
-    //string st_name[st_no];
+    for (i=0; i<st_no; i++) {
+        
+        cout << "station" << "-" << i << " = " << st_name[i] <<"\n";
+        
+   }
+  
+    for (i=0; i<ins_no; i++) {
+        
+        cout << "instrument" << "-" << i << " = " << ins_name[i] <<"\n";
+        
+    }
+    
+    
+    
 
     cout << "Number of stations" << st_no << "  Number of Instruments" << ins_no << "\n";
     
@@ -91,46 +118,8 @@ int main() {
     f=1;
     j=1;
     
-
-  /*  while ( inputfile >> str1 ) {
-        
-        if (f==1 || f==2) { f=f+1;}
-        
-        else if (f < (3+st_no) ) {
-        
-            
-        
-        }
-   
-    
-    while (getline(inputfile, line)) {
-        
-        istringstream iss(line);
-        string word;
-        
-        int g=1;
-        while(iss >> word){
-            if (g==1){st_name = word;}
-            if (g==2){ins_name = word;}
-            //if (g==3){ev_number = word;}
-            g=g+1;
-        }
-        
-        cout<< "station name :" << st_name << "  Instrument name:" << ins_name << "\n" ;
-        
-            if (word == "ShortPeriod"){
-                cout << "ShortPeriod stations:" << f+1 << "\n";
-            }
-        }
-    
-    
-        
-  */
     
 
-    
-    //cout << st_ins[0][3] << "\n";
-    // st_ins[0][j]=str1; j=j+1;f=f+1;
     
     
     // Closing files
