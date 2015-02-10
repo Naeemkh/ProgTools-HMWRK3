@@ -35,9 +35,11 @@
 #include <fstream>
 #include <iostream>
 
+
 using namespace std;
 
-string i;
+//string i;
+int st_no,ins_no,k,i;
 
 int main() {
     
@@ -62,11 +64,28 @@ int main() {
     }
 
     outputfile.open("naeem.out");
-    while ( inputfile >> i ) {
-
-    outputfile << i << "\n";
-
     
+    k=1;
+    
+    while ( inputfile >> i ) {
+        
+        if ( k==1 ) { st_no = i;}
+        else if (k==2) {ins_no = i;}
+        else { continue; }
+        k=k+1;
     }
+    
+    cout << "Station no "   << st_no << "\n";
+    cout << "Instrument no" << ins_no << "\n" ;
+        
+    /*
+    while ( inputfile >> i ) {
+        
+        
+    outputfile << i << "\n";
+    }
+     */
+    
+    
 }
 
