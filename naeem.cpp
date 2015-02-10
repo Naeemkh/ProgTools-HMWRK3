@@ -31,15 +31,19 @@
   * 
   */
 
-#include <string>
+
 #include <fstream>
 #include <iostream>
+#include <string>
+#include <sstream>
 
 
 using namespace std;
 
 //string i;
-int st_no,ins_no,k,i;
+int st_no,ins_no,k,i,f,j,ev_number;
+char str1;
+string line,st_name,ins_name;
 
 int main() {
     
@@ -66,26 +70,74 @@ int main() {
     outputfile.open("naeem.out");
     
     k=1;
-    
+
     while ( inputfile >> i ) {
         
-        if ( k==1 ) { st_no = i;}
-        else if (k==2) {ins_no = i;}
-        else { continue; }
-        k=k+1;
+        if      ( k==1 ) { st_no = i; k=k+1;}
+        else if ( k==2 ) {ins_no = i; k=k+1;}
+        else { break; }
+        
     }
     
-    cout << "Station no "   << st_no << "\n";
-    cout << "Instrument no" << ins_no << "\n" ;
-        
-    /*
-    while ( inputfile >> i ) {
-        
-        
-    outputfile << i << "\n";
-    }
-     */
+    inputfile.close();
     
+    inputfile.open(inputfilename.c_str());
+    
+    //string st_name[st_no];
+
+    cout << "Number of stations" << st_no << "  Number of Instruments" << ins_no << "\n";
+    
+    
+    f=1;
+    j=1;
+    
+
+  /*  while ( inputfile >> str1 ) {
+        
+        if (f==1 || f==2) { f=f+1;}
+        
+        else if (f < (3+st_no) ) {
+        
+            
+        
+        }
+   
+    
+    while (getline(inputfile, line)) {
+        
+        istringstream iss(line);
+        string word;
+        
+        int g=1;
+        while(iss >> word){
+            if (g==1){st_name = word;}
+            if (g==2){ins_name = word;}
+            //if (g==3){ev_number = word;}
+            g=g+1;
+        }
+        
+        cout<< "station name :" << st_name << "  Instrument name:" << ins_name << "\n" ;
+        
+            if (word == "ShortPeriod"){
+                cout << "ShortPeriod stations:" << f+1 << "\n";
+            }
+        }
+    
+    
+        
+  */
+    
+
+    
+    //cout << st_ins[0][3] << "\n";
+    // st_ins[0][j]=str1; j=j+1;f=f+1;
+    
+    
+    // Closing files
+    inputfile.close();
+    outputfile.close();
+    
+    return 0;
     
 }
 
