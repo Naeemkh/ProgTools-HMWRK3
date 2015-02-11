@@ -87,6 +87,7 @@ int main() {
     
     int st_ins[st_no][ins_no];
     
+    
     for(i=0; i<st_no; i++)
         
     {
@@ -101,6 +102,7 @@ int main() {
         
     }
     
+   
     
     for (j=0; j<st_no ; j++) {
         
@@ -131,7 +133,7 @@ int main() {
     
     while (inputfile >> temp_station >> temp_instrument >> temp_event){
     
-     cout << "temp station : " << temp_station << "  temp instrument: " << temp_instrument << " temp event: " << temp_event  << "\n";
+//     cout << "temp station : " << temp_station << "  temp instrument: " << temp_instrument << " temp event: " << temp_event  << "\n";
         
         for (i=0; i < st_no; i++) {
             
@@ -152,32 +154,25 @@ int main() {
         
         st_ins[f_index][s_index]=st_ins[f_index][s_index] + temp_event;
         
-        cout << "f_index : " << f_index << " s_index: " << s_index << "\n";
-        
-        
+  
+    }
     
-   
-    
-
-    
-
-    for(i=0; i<st_no; i++)
+    for(k=0; k<st_no; k++)
         
     {
         for(j=0; j<ins_no; j++)
             
         {
-            cout << "i = " << i << "j="<<j<< "  " << st_ins[i][j] << "\n";
-
+           // cout << "i = " << i << "j="<<j<< "  " << st_ins[i][j] << "\t";
+              cout << st_ins[k][j] << "\t";
             
         }
         
+        cout << endl;
+        
     }
-    }
+    
 
-    
-    cout << "i = " << i << "j="<<j<< "  " << st_ins[i][j] << "\n";
-    
     
     // Closing files
     inputfile.close();
