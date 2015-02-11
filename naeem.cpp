@@ -75,6 +75,9 @@ int main() {
 
     outputfile.open("naeem.out");
     
+    // Write the summary report in the output file
+    outputfile << "Seismic Events Summary Report" << "\n"<<"\n";
+    
     
     
     inputfile >> i;
@@ -116,24 +119,26 @@ int main() {
         inputfile >> ins_name[j];
         
     }
+    
+    
+    // Write the summary report in the output file
+    outputfile << "Station" << " " ;
+    
+    
 
     
     for (i=0; i<st_no; i++) {
         
-        cout << "station" << "-" << i << " = " << st_name[i] <<"\n";
+         outputfile  << ins_name[i] << " " ;
         
    }
   
-    for (i=0; i<ins_no; i++) {
-        
-        cout << "instrument" << "-" << i << " = " << ins_name[i] <<"\n";
-        
-    }
+    outputfile  << "\n";
+   
     
     
     while (inputfile >> temp_station >> temp_instrument >> temp_event){
-    
-//     cout << "temp station : " << temp_station << "  temp instrument: " << temp_instrument << " temp event: " << temp_event  << "\n";
+
         
         for (i=0; i < st_no; i++) {
             
@@ -157,20 +162,21 @@ int main() {
   
     }
     
-    for(k=0; k<st_no; k++)
+    for (k=0; k<st_no; k++) {
+    
         
-    {
-        for(j=0; j<ins_no; j++)
+        
+        outputfile <<  st_name[k] <<"\n";
+        
+        for(j=0; j<ins_no; j++){
             
-        {
-           // cout << "i = " << i << "j="<<j<< "  " << st_ins[i][j] << "\t";
-              cout << st_ins[k][j] << "\t";
+        outputfile << st_ins[k][j] << "\t";
             
         }
         
-        cout << endl;
-        
     }
+    
+    
     
 
     
