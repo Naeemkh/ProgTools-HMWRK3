@@ -87,6 +87,21 @@ int main() {
     
     int st_ins[st_no][ins_no];
     
+    for(i=0; i<st_no; i++)
+        
+    {
+        
+        for(j=0; j<ins_no; j++)
+            
+        {
+            st_ins[i][j]=0;
+            
+            
+        }
+        
+    }
+    
+    
     for (j=0; j<st_no ; j++) {
         
         inputfile >> st_name[j];
@@ -135,28 +150,33 @@ int main() {
             
         }
         
+        st_ins[f_index][s_index]=st_ins[f_index][s_index] + temp_event;
+        
         cout << "f_index : " << f_index << " s_index: " << s_index << "\n";
         
-    }
+        
+    
    
-    /*
+    
+
+    
 
     for(i=0; i<st_no; i++)
         
     {
-        
         for(j=0; j<ins_no; j++)
             
         {
-            
-            cout << "  " << st_ins[i][j] << "\n";
+            cout << "i = " << i << "j="<<j<< "  " << st_ins[i][j] << "\n";
+
             
         }
         
     }
+    }
 
-  
-*/
+    
+    cout << "i = " << i << "j="<<j<< "  " << st_ins[i][j] << "\n";
     
     
     // Closing files
