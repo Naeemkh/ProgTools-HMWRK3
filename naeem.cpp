@@ -41,11 +41,15 @@
 using namespace std;
 
 //string i;
-int st_no,ins_no,k,i,f,j,ev_number;
+int st_no,ins_no,k,i,f,j,ev_number,f_index,s_index;
 char str1;
 string line;
-string st_name[10];
+string st_name[100];
 string ins_name[10];
+
+string temp_station;
+string temp_instrument;
+int temp_event,temp_array,temp_array1;
 
 int main() {
     
@@ -81,7 +85,7 @@ int main() {
     
     ins_no = i;
     
-
+    int st_ins[st_no][ins_no];
     
     for (j=0; j<st_no ; j++) {
         
@@ -110,16 +114,49 @@ int main() {
     }
     
     
+    while (inputfile >> temp_station >> temp_instrument >> temp_event){
     
+     cout << "temp station : " << temp_station << "  temp instrument: " << temp_instrument << " temp event: " << temp_event  << "\n";
+        
+        for (i=0; i < st_no; i++) {
+            
+            if (temp_station==st_name[i]) {
+                f_index=i;
+                break;
+            }
+        }
+        
+        for (i=0; i < ins_no; i++) {
+            if (temp_instrument==ins_name[i]) {
+             
+                s_index=i;
+                break;
+            }
+            
+        }
+        
+        cout << "f_index : " << f_index << " s_index: " << s_index << "\n";
+        
+    }
+   
+    /*
 
-    cout << "Number of stations" << st_no << "  Number of Instruments" << ins_no << "\n";
-    
-    
-    f=1;
-    j=1;
-    
-    
+    for(i=0; i<st_no; i++)
+        
+    {
+        
+        for(j=0; j<ins_no; j++)
+            
+        {
+            
+            cout << "  " << st_ins[i][j] << "\n";
+            
+        }
+        
+    }
 
+  
+*/
     
     
     // Closing files
