@@ -61,6 +61,10 @@ int min_st=0;
 int max_ins=0;
 int min_ins=0;
 
+int nvalid_ev=0,nvalid_ins=0,nvalid_st=0;
+
+bool is_station,is_instrument,is_event;
+
 int main() {
     
     string   inputfilename;
@@ -97,6 +101,15 @@ int main() {
     inputfile >> i;
     
     ins_no = i;
+    
+    // number of stations
+    cout << "\n";
+    cout << "Number of stations: " << st_no << "\n";
+    cout << "Number of instruments: " << ins_no << "\n";
+
+    
+    
+    
     
     int st_ins[st_no][ins_no];
     int sum_stations[st_no];
@@ -142,7 +155,7 @@ int main() {
     }
     
     
-   
+
     
     
    
@@ -178,12 +191,16 @@ int main() {
     
     int data_counter = 1;
     while (inputfile >> temp_station >> temp_instrument >> temp_event){
-
+        
+        is_station=false;
+        is_instrument=false;
+        is_event = false;
         
         for (i=0; i < st_no; i++) {
             
             if (temp_station==st_name[i]) {
                 f_index=i;
+                is_station = true;
                 break;
             }
         }
@@ -192,16 +209,51 @@ int main() {
             if (temp_instrument==ins_name[i]) {
              
                 s_index=i;
+                is_instrument=true;
                 break;
             }
             
         }
         
-        st_ins[f_index][s_index]=st_ins[f_index][s_index] + temp_event;
+        if (temp_event >= 0){
+            is_event = true;
+        }
         
-  
+        if (is_event && is_instrument && is_station){
+            
+                st_ins[f_index][s_index]=st_ins[f_index][s_index] + temp_event;
+        }else if(is_station==false){
+            cout << "Entry #"<<data_counter<<":"<<temp_station<<" "<<temp_instrument<<" "<<temp_event<<" "
+            << "-- Warning: Station does not exist"<<"\n";
+            nvalid_st=nvalid_st+1;
+            
+        }
+            else if(is_instrument==false){
+                cout << "Entry #"<<data_counter<<":"<<temp_station<<" "<<temp_instrument<<" "<<temp_event<<" "
+                << "-- Warning: Instrument does not exist"<<"\n";
+                nvalid_ins=nvalid_ins+1;
+                
+            
+            }else if (is_event==false){
+                cout << "Entry #"<<data_counter<<":"<<temp_station<<" "<<temp_instrument<<" "<<temp_event<<" "
+                << "-- Warning: Negative events"<<"\n";
+                nvalid_ev=nvalid_ev+1;
+                
+            }
+                
+            
+        
+        
+        
+        
+        
+        data_counter=data_counter+1;
     }
     
+    
+    cout << "Total of " << (data_counter-1)-(nvalid_st+nvalid_ins+nvalid_ev) << " entries processed correcty" <<"\n";
+    cout << "Total of " << (nvalid_st+nvalid_ins+nvalid_ev) << " ignored" <<"\n";
+    cout << "Generating report... " << "\n";
     
     // calculation of total number of event per station
     
@@ -260,7 +312,7 @@ int main() {
     
     
     outputfile << "\n";
-    outputfile << "Total number of events per insrumetn"<< "\n";
+    outputfile << "Total number of events per insrument"<< "\n";
     outputfile << "\n";
     
     
@@ -277,9 +329,9 @@ int main() {
     for (i=0;  i < st_no; i++) {
         if (sum_stations[i] > max_n_station){
             max_n_station = sum_stations[i];
-            cout << "if is true" << i << "\n";
+            
         }
-        cout << "for works i: " << i << "\n";
+        
     }
     
     // Calculation the least record for stations
@@ -418,14 +470,14 @@ int main() {
 
     
     
+    cout << "Completed!" <<"\n";
     
     
     
     
     
     
-    
-    cout << "Min station : " << min_n_station <<"Min instrument:"<< min_n_instrument << "max station : " << max_n_station <<  "max instrument:" << max_n_instrument << "\n";
+   
     
     
     // Closing files
