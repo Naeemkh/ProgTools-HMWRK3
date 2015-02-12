@@ -49,7 +49,7 @@ string ins_name[10];
 
 string temp_station;
 string temp_instrument;
-int temp_event,temp_array,temp_array1;
+int temp_event,temp_array,temp_array1, temp_ins_no;
 
 int main() {
     
@@ -89,6 +89,8 @@ int main() {
     ins_no = i;
     
     int st_ins[st_no][ins_no];
+    int sum_stations[st_no][1];
+    int sum_instrument[ins_no][1];
     
     
     for(i=0; i<st_no; i++)
@@ -104,6 +106,45 @@ int main() {
         }
         
     }
+    
+    
+    
+    
+    for(i=0; i<st_no; i++)
+        
+    {
+        
+        for(j=0; j<ins_no; j++)
+            
+        {
+            st_ins[i][j]=0;
+            
+            
+        }
+        
+    }
+    
+    
+    
+    
+    for(i=0; i<st_no; i++)
+        
+    {
+       sum_stations[i][0]=0;
+    
+    }
+    
+    
+    for(i=0; i<st_no; i++)
+        
+    {
+        sum_instrument[i][0]=0;
+        
+    }
+    
+    
+   
+    
     
    
     
@@ -162,23 +203,60 @@ int main() {
   
     }
     
+    
+    // calculation of total number of event per station
+    
+   for (i=0; i<st_no; i++) {
+       
+       for (j=0; j < ins_no; j++){
+           
+           sum_stations[i][0]+=   st_ins[i][j];
+       }
+       
+   }
+    
+    for (j=0; j<ins_no; j++) {
+        
+        for (i=0; i < st_no; i++){
+           
+            sum_instrument[j][0]+= st_ins[i][j];
+        }
+        
+    }
+    
+    
     for (k=0; k<st_no; k++) {
     
         
-        
-        outputfile <<  st_name[k] <<"\n";
+        outputfile <<  st_name[k] <<"\t";
         
         for(j=0; j<ins_no; j++){
             
         outputfile << st_ins[k][j] << "\t";
             
         }
+         outputfile << "\n";
+        
         
     }
     
+    cout << "Stations :" << "\n";
     
+    for (i=0; i<st_no; i++) {
+        
+        
+           cout<< sum_stations[i][0] << "\n";
+        
+    }
     
-
+    cout << "instruments :" << "\n";
+    
+    for (i=0; i<ins_no; i++) {
+        
+        
+        cout<< sum_instrument[i][0] << "\t";
+        
+    }
     
     // Closing files
     inputfile.close();
