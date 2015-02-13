@@ -46,8 +46,8 @@
     
     int max_n_station = 0,
         min_n_station = 0,
-        max_n_instrument= 0,
-        min_n_instrument= 0;
+        max_n_instrument = 0,
+        min_n_instrument = 0;
     
     int max_st  = 0,
         min_st  = 0,
@@ -74,6 +74,41 @@
     string temp_instrument;
     
     /******************************************************************************/
+    /*********************** function declaration *********************************/
+
+
+    //Function for picking the maximum and minimum of stations and instrumetns
+    // max_min(number of array, array, predefined max, 1 ) d=1 max, d=2 min
+    int max_min (int a, int b[], int c, int d) {
+    
+        if ( d == 1 ) {
+        
+            for ( i = 0;  i < a; i++ ) {
+            
+                if ( b[i] > c ) {
+                
+                    c = b[i];
+                
+                }
+            }
+            
+        } else if (d == 2 ) {
+            
+            for ( i = 0;  i < a; i++ ) {
+            
+                if ( b[i] < c ) {
+                
+                    c = b[i];
+              
+                }
+            }
+        }
+        
+       return c;
+        
+    }
+
+
             
     int main() {
         
@@ -140,7 +175,7 @@
         
         
         // store the station name
-        for ( j = 0; j < st_no ; j++ ) {
+        for ( j = 0; j < st_no; j++ ) {
             
             inputfile >> st_name[j];
             
@@ -148,7 +183,7 @@
         
         
         //store the instrument name
-        for ( j = 0; j < ins_no ; j++ ){
+        for ( j = 0; j < ins_no; j++ ){
             
             inputfile >> ins_name[j];
             
@@ -200,7 +235,7 @@
                 is_event = true;
             }
             
-            // If all three fields are valid the add it to data.
+            // If all three fields are valid then add it to data.
             if ( is_event && is_instrument && is_station ) {
                 
                 st_ins[f_index][s_index] = st_ins[f_index][s_index] + temp_event;
@@ -329,42 +364,12 @@
             
         }
         
-        // Calculation the most record for stations
-        for ( i = 0;  i < st_no; i++ ) {
-            
-            if ( sum_stations[i] > max_n_station ) {
-                
-                max_n_station = sum_stations[i];
-                
-            }
-        }
+        // Picking the most and least number of events per stations and instruments.
+        max_n_station    = max_min(st_no,sum_stations,max_n_station,1);
+        min_n_station    = max_min(st_no,sum_stations,min_n_station,2);
+        max_n_instrument = max_min(ins_no,sum_instrument,max_n_instrument,1);
+        min_n_instrument = max_min(ins_no,sum_instrument,min_n_instrument,2);
         
-        // Calculation the least record for stations
-        for ( i = 0; i < st_no; i++) {
-            
-            if ( sum_stations[i] < min_n_station ) {
-                
-                min_n_station = sum_stations[i];
-            }
-        }
-        
-        // Calculation the most record for instruments
-        for ( i = 0; i < ins_no; i++) {
-            
-            if ( sum_instrument[i] > max_n_instrument ) {
-                
-                max_n_instrument = sum_instrument[i];
-            }
-        }
-        
-        // Calculation the least record for instruments
-        for ( i = 0; i < ins_no ; i++ ) {
-            
-            if ( sum_instrument[i] < min_n_instrument ) {
-                
-                min_n_instrument = sum_instrument[i];
-            }
-        }
         
         // storing all stations that have max number of events.
         for ( i = 0; i < st_no ; i++ ) {
