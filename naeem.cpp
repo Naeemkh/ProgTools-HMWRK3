@@ -13,10 +13,10 @@
      */
     
      /* This script take a input file name from user and return
-      * outputfile and error file.General idea of the function is
+      * outputfile and error file. General idea of the function is
       * to generate the summary report of the seismic stations 
       * operations in California.
-      * In order to compile the code run make -f naeem.mk 
+      * In order to compile the code run:  make -f naeem.mk
       * 
       * Example of input file:
       * 6 4
@@ -242,12 +242,12 @@
                 
             } else if ( is_station == false ) {
                 
-                cout << "Entry #" << data_counter << " : " <<setw(10) << left<< temp_station << " "
+                cout << "Entry #" << data_counter << " : " << setw(10) << left << temp_station << " "
                      << setw(15) << left << temp_instrument << " " << temp_event << " "
                      << "-- Warning: Station does not exist" << "\n";
                 
                 
-                errorfile << "Entry #" << data_counter << " : " <<setw(10) << left<< temp_station << " "
+                errorfile << "Entry #" << data_counter << " : " << setw(10) << left << temp_station << " "
                           << setw(15) << left << temp_instrument << " " << temp_event << " "
                           << "-- Warning: Station does not exist" << "\n";
               
@@ -255,12 +255,12 @@
                 
             } else if ( is_instrument == false ) {
                 
-                cout << "Entry #" << data_counter << " : " << setw(10) << left<< temp_station << " "
-                     <<setw(15) << left << temp_instrument << " " << temp_event << " "
+                cout << "Entry #" << data_counter << " : " << setw(10) << left << temp_station << " "
+                     << setw(15) << left << temp_instrument << " " << temp_event << " "
                      << "-- Warning: Instrument does not exist" << "\n";
                 
                 
-                errorfile << "Entry #" << data_counter << " : " <<setw(10) << left<< temp_station << " "
+                errorfile << "Entry #" << data_counter << " : " << setw(10) << left << temp_station << " "
                           << setw(15) << left << temp_instrument << " " << temp_event << " "
                           << "-- Warning: Instrument does not exist" << "\n";
                 
@@ -268,11 +268,11 @@
                 
             } else if ( is_event == false ){
                 
-                cout << "Entry #" << data_counter << " : " <<setw(10) << left<< temp_station << " "
+                cout << "Entry #" << data_counter << " : " << setw(10) << left << temp_station << " "
                      << setw(15) << left << temp_instrument << " " << temp_event << " "
                      << "-- Warning: Negative events" << "\n";
                 
-                errorfile << "Entry #" << data_counter << " : " <<setw(10) << left<< temp_station << " "
+                errorfile << "Entry #" << data_counter << " : " << setw(10) << left << temp_station << " "
                           << setw(15) << left << temp_instrument << " " << temp_event << " "
                           << "-- Warning: Negative events" << "\n";
                      
@@ -313,6 +313,7 @@
         min_n_station = sum_stations[0];
         max_n_station = sum_stations[0];
         
+        // calculation of total number of event per instrument
         for ( j = 0; j < ins_no; j++ ) {
             
             for ( i = 0; i < st_no; i++ ) {
