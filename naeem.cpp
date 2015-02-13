@@ -9,6 +9,7 @@
     /*
      * This program is written at Center for Earthquake Research 
      * and Information (CERI) at University of Memphis. 
+     * Github url: https://github.com/Naeemkh/ProgTools-HMWRK3.git
      * All rights reserved. 
      */
     
