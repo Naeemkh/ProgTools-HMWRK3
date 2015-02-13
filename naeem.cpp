@@ -242,38 +242,38 @@
                 
             } else if ( is_station == false ) {
                 
-                cout << "Entry #" << data_counter << ":" << temp_station << " "
-                     << temp_instrument << " " << temp_event << " "
+                cout << "Entry #" << data_counter << " : " <<setw(10) << left<< temp_station << " "
+                     << setw(15) << left << temp_instrument << " " << temp_event << " "
                      << "-- Warning: Station does not exist" << "\n";
                 
                 
-                errorfile << "Entry #" << data_counter << ":" << temp_station << " "
-                          << temp_instrument << " " << temp_event << " "
+                errorfile << "Entry #" << data_counter << " : " <<setw(10) << left<< temp_station << " "
+                          << setw(15) << left << temp_instrument << " " << temp_event << " "
                           << "-- Warning: Station does not exist" << "\n";
               
                 nvalid_st = nvalid_st + 1;
                 
             } else if ( is_instrument == false ) {
                 
-                cout << "Entry #" << data_counter << ":" << temp_station << " "
-                     << temp_instrument << " " << temp_event << " "
+                cout << "Entry #" << data_counter << " : " << setw(10) << left<< temp_station << " "
+                     <<setw(15) << left << temp_instrument << " " << temp_event << " "
                      << "-- Warning: Instrument does not exist" << "\n";
                 
                 
-                errorfile << "Entry #" << data_counter << ":" << temp_station << " "
-                          << temp_instrument << " " << temp_event << " "
+                errorfile << "Entry #" << data_counter << " : " <<setw(10) << left<< temp_station << " "
+                          << setw(15) << left << temp_instrument << " " << temp_event << " "
                           << "-- Warning: Instrument does not exist" << "\n";
                 
                 nvalid_ins = nvalid_ins + 1;
                 
             } else if ( is_event == false ){
                 
-                cout << "Entry #" << data_counter << ":" << temp_station << " "
-                     << temp_instrument << " " << temp_event << " "
+                cout << "Entry #" << data_counter << " : " <<setw(10) << left<< temp_station << " "
+                     << setw(15) << left << temp_instrument << " " << temp_event << " "
                      << "-- Warning: Negative events" << "\n";
                 
-                errorfile << "Entry #" << data_counter << ":" << temp_station << " "
-                          << temp_instrument << " " << temp_event << " "
+                errorfile << "Entry #" << data_counter << " : " <<setw(10) << left<< temp_station << " "
+                          << setw(15) << left << temp_instrument << " " << temp_event << " "
                           << "-- Warning: Negative events" << "\n";
                      
                 nvalid_ev = nvalid_ev + 1;
